@@ -1,0 +1,110 @@
+
+    
+</script>!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Aplicação de métodos</title>
+</head>
+
+<style>
+	img.alta {float: left; height: 420px; width: 300px;}
+	h1 {border-bottom-style: inset;}
+	pre {font-size: 1.2em;}
+	.fonteAzul {color: rgb(0, 183, 255);}
+</style>
+
+<body>
+	<img src="https://img.freepik.com/vetores-premium/vetor-de-mulher-dentista_42515-318.jpg?w=2000" class="alta">
+	<h1>Consultório Odontológico</h1>
+	<form>
+		<p>
+			Pacientes: <input type="text" id="inPacientebvcpo" required autofocus>
+			<input type="submit" value="Adicionar">
+			<input type="button" value="Urgência" id="btUrgencia">
+			<input type="button" value="Atender" id="btAtender">
+		</p>
+
+	</form>
+
+	<h3>Em Atendimento:
+		<span class="fonteAzul"></span>
+	</h3>
+
+	<pre></pre>
+
+	<script>
+	let frm = document.querySelector("form")
+    let respNome = document. querySelector("span")
+    let respLista = document.querySelector("pre")
+    
+    let pacientes = []
+
+    frm.addEventListener("submit" . (e) => {
+        e.preventDefault()
+
+        const nome = frm.inPaciente.value
+        pacientes.push(nome)
+
+        let lista = ""
+
+        for(let i = 0; i < pacientes.length; i++){
+            lista = lista + (i+1) + "," + paciente
+        }
+        respLista.innerText = lista
+        frm.inPaciente.value =""
+        frm.inPaciente.focus()
+    })
+
+    frm.btUrgencia.addEventListener("click" . ()=>{
+
+        const nome = frm.inPaciente.value
+        pacientes.unshift(nome)
+
+        let lista = ""
+
+        for (let i = 0; i < pacientes.length; i++{
+            lista = lista + (i + 1) + "," + pacientes[i] + "\n"
+        }
+
+        respLista.innerText = lista
+        frm.inPaciente.value = ""
+        frm.inPaciente.focus()
+
+    })
+
+    frm.btAtender.addEventListener("click", () =>{
+
+        if(pacientes.length == 0){
+            alert("Não há pacientes na lista")
+            frm.inPaciente.focus()
+            return
+        }
+        const atendimento = pacientes.shift()
+
+        lest lista =""
+
+        for(let i = 0; i < pacientes.length; i++){
+            lista = lista + (i+1) + "," + pacientes[i] + "\n" 
+        }
+
+        respLista.innerText = lista
+        respNome.innerText = atendimento
+        frm.inPaciente.focus()
+
+        
+    })
+
+    </script>
+    </body>
+</html>
+
+
+
+
+
+        
+
+            
+        

@@ -1,0 +1,126 @@
+1<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email e Senha</title>
+</head>
+<body>
+    <h1>Programa Email e senha</h1>
+    <hr>
+    <form action="">
+        <p>
+            Selecione o vínculo:
+            <select id="inVinculo">
+                <option value="aluno">Aluno</option>
+                <option value="professor">Professor</option>
+                <option value="adm">Administrativo</option>
+            </select>
+        </p>
+        <p>
+            Nome: <input type="text" name="inNome" id="">
+            <input type="submit" value="Gerar Email e Senha">
+        </p>
+    </form>
+    <h3 id="outEmail"></h3>
+    <h3 id="outSenha"></h3>
+    <script>
+	const frm = document.querySelector("form")
+const outEmail = document.querySelector("#outEmail")
+const outSenha = document.querySelector("#outSenha")
+
+
+function obterUltimoNome(nome){
+    let ultEspaco = nome.lastIndexOf(" ")
+    let ultNome = nome.substr(ultEspaco)
+    return ultNome
+}
+function contarVogais(nome){
+    let vogais = "aAEeIiOoUu"
+    let numVogais = 0
+    let tam = nome.length
+    for(let i=0; i < tam; i++){
+        let caractereAtual = nome.charAt(i)
+        if( vogais.indexOf(caractereAtual) !== -1){
+            numVogais++
+        }
+    }
+    if(numVogais<10){
+        numVogais = "0" + numVogais
+    }
+    return numVogais
+}
+function gerarSenha(nome){
+    let ultNome = obterUltimoNome(nome)
+    let numVogais = contarVogais(nome)
+    let senha = ultNome + numVogais
+    outSenha.innerText = "Senha incial: " + senha
+
+}
+function emailAluno(nome){
+    let partes = nome.split(" ")
+    let tam = partes .length
+    let email = ""
+
+    for(let i = 0; i<tam;i++){
+        email+=partes[i].charAt(0).toLowerCase()
+    }
+    
+    email+=partes[tam-1].slice(1).toLowerCase()
+    email+="@ifal.edu.br"
+    outEmail.innerText = "Email aluno: " + email
+}
+function emailProf(nome){
+    let priEspaco = nome.indexOf(" ")
+    let ultEspaco = nome.lastIndexOf(" ")
+    let primeiroNome = nome.substr(0, priEspaco).toLowerCase()
+    let ultNome = nome.substr(ultEspaco).toLowerCase()
+
+    
+    let email = "Email Professor: " + primeiroNome + "." + ultNome + "@ifal.edu.br"
+    outEmail.innerText = email
+
+}
+function emailAdm(nome){
+    let priEspaco = nome.indexOf(" ")
+    let primeiroNome = nome.substr(0, priEspaco).toLowerCase()
+
+    let email = "Email do Servidor: " + primeiroNome + "_adm" + "@ifal.edu.br"
+    outEmail.innerText = email
+}
+
+
+frm.inNome.addEventListener("focus", ()=>{
+    frm.inNome.placeholder = "Digite seu nome completo"
+})
+
+frm.inNome.addEventListener("blur", ()=>{
+    frm.inNome.placeholder = ""
+})
+
+frm.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    let nome = frm.inNome.value.trim()    
+    if(!nome.includes(" ")){
+        alert("Erro! Digite o nome completo!")
+        
+    }
+    const vinculo = frm.inVinculo.selectedIndex
+
+    switch(vinculo){
+        case 0: 
+        emailAluno(nome)
+        break
+        case 1: 
+        emailProf(nome)
+        break
+        case 2: 
+        emailAdm(nome)
+        break
+
+    }
+     gerarSenha(nome)
+})
+</script>
+</body>
+</html>

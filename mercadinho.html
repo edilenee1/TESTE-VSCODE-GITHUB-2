@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta charset="UFT-8">
+        <title>Mercadinho do Zé</title>
+    </head>
+    <body>
+        <h1>Calculadora Express</h1>
+        <form>
+            <p>
+                Quantas centenas: <input type="text" id="inCentenas">
+                <input type="submit" value="calcular">
+            </p>
+            
+
+            
+        </form>
+        <h2> </h2>
+        <script>
+            var frm = document.querySelector("form")
+            var saída = document.querySelector("h2")
+ 
+            frm.addEventListener("submit", (e) => {
+                e.preventDefault()
+                var ovos = (frm.inCentenas.value) * 100 
+                var bandeijas = Math.floor(ovos/12)
+                var sobra = ovos%12
+                saída.textContent = "para " + ovos + " ovos será preciso "
+                + bandeijas + " bandeijas e sobram " + sobra + " ovos. "
+            })
+
+                
+
+        
+        </script>
+    </body>
+
+</html>
+
+
+    
+
+

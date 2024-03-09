@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ref Bib</title>
+</head>
+<body>
+    <h1>Referência Bibliográfica</h1>
+
+    <form>
+        <p>
+          Nome do autor: <input type="text" id="nomeAutor" required>
+        </p>
+        <input type="submit" value="Gerar citação bibliográfica">
+    </form>
+
+    <h3></h3>
+
+    
+    <script src="srcript.js">
+        const frm = document.querySelector("form")
+        const resp = document.querySelector("#outResp")
+
+        frm.addEventListener("submit", (e) => {
+            e.preventDefault()
+
+        const nomeAutor = frm.nomeAutor.value
+
+        if (!nomeAutor.includes(" ")) {
+            alert("Coloque seu nome completo")
+            return // Retorna, impedindo a execução do restante do código
+        }                                                                                  })
+
+</script>
+</body>
+</html>

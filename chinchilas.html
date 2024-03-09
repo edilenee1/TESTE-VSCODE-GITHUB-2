@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chinchilas</title>
+</head>
+
+<body>
+
+    <P>Quantidade <input type="text" name="" id="quantidade"></P>
+    <p>anos <input type="text" name="" id="anos"> </p>
+    <input type="button" value="calcular" id="botao">
+    <pre id="resultado"></pre>
+
+    <script>
+
+        const quantidade = document.getElementById('quantidade')
+        const anos = document.getElementById('anos')
+        const botao = document.getElementById('botao')
+        const resultado = document.getElementById('resultado')
+
+        botao.addEventListener("click", mostrar)
+
+        function mostrar() {
+            resultado.innerText = ''
+            let quant = quantidade.value
+            let ano = anos.value
+
+            for (let i = 1; i <= ano; i++) {
+                resultado.innerText += (i + '° ano: ' + quant + ' chinchilas' + '\n')
+                quant = quant * 3
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
+

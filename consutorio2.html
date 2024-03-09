@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aplicação de métodos</title>
+</head>
+
+<style>
+    img.alta {
+        float: left;
+        height: 420px;
+        width: 300px;
+    }
+
+    h1 {
+        border-bottom-style: inset;
+    }
+
+    pre {
+        font-size: 1.2em;
+    }
+
+    .fonteAzul {
+        color: rgb(0, 183, 255);
+    }
+</style>
+
+<body>
+    <img src="https://img.freepik.com/vetores-premium/vetor-de-mulher-dentista_42515-318.jpg?w=2000" class="alta">
+    <h1>Consultório Odontológico</h1>
+    <form>
+        <p>
+            Pacientes: <input type="text" id="inPaciente" required autofocus>
+        <p>Idade: <input type="text" id="inIdade" required autofocus></p>
+        <input type="submit" value="Adicionar">
+        <input type="button" value="Separar" id="btSeparar">
+        <input type="button" value="Atender" id="btAtender">
+        </p>
+
+    </form>
+
+    <h3>Em Atendimento:
+        <span class="fonteAzul"></span>
+    </h3>
+
+    <pre id="Lista"></pre>
+    <pre id="Listanormal"></pre>
+    <pre id="Listapreferencial"></pre>
+
+    <script>
+
+        let frm = document.querySelector("form")
+        let respNome = document.querySelector("span")
+        let respLista = document.querySelector("#Lista")
+        let respListaN = document.querySelector("#Listanormal")
+        let respListaP = document.querySelector("#Listapreferencial")
+
+        let pacientes = []
+
+
+        frm.addEventListener("submit", (e) => {
+            e.preventDefault()
+
+        const nome = frm.inPaciente.value
+        const idade = frm.inIdade.value
+        pacientes.push({ nome, idade })
+
+        let lista = ""
+
+        for (let i = 0; i < pacientes.length; i++) {
+            lista = lista + (i + 1) + ". " + pacientes[i].nome + ' - ' + pacientes[i].idade + ' Anos' + "\n"
+        }
+
+            respLista.innerText = lista
+            frm.inPaciente.value = ""
+            frm.inPaciente.focus()
+
+        })
+
+
+        frm.btSeparar.addEventListener("click", () => {
+
+            let listaN = "Lista normal \n"
+            let listaPre = "Lista preferencial \n"
+            
+            let m = 1
+            for (let i = 0; i < pacientes.length; i++) {
+            if (pacientes[i].idade < 60) {
+                listaN = listaN + (m) + ". " + pacientes[i].nome + ' - ' + pacientes[i].idade + ' Anos' + "\n"
+            }
+                m++
+
+            }
+
+            let n = 1
+            for (let j = 0; j < pacientes.length; j++) {
+            if (pacientes[j].idade >= 60) {
+                listaPre = listaPre + (n) + ". " + pacientes[j].nome + ' - ' + pacientes[j].idade + ' Anos' + "\n"
+            }
+                n++
+            }
+
+            respListaN.innerText = listaN
+            respListaP.innerText = listaPre
+            respLista.innerText = ""
+
+        })
+
+
+        frm.btAtender.addEventListener("click", () => {
+
+            if (pacientes.length == 0) {
+                alert("Não há pacientes na lista")
+                frm.inPaciente.focus()
+                return
+            }
+
+            const atendimento = pacientes.shift()
+
+            let lista = ""
+
+            for (let k = 0; k < pacientes.length; k++) {
+                lista = lista + (k) + ". " + pacientes[k].nome + ' - ' + pacientes[k].idade + ' Anos' + "\n"
+            }
+
+            respLista.innerText = lista
+            respNome.innerText = atendimento
+            frm.inPaciente.focus()
+
+        })
+
+</script>
+</body>
+</html>

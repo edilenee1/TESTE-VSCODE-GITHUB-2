@@ -1,0 +1,44 @@
+<html> 
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href = "css/estilos.css">
+        <title>Exemplo 4.1</title>
+    </head>
+    <body>
+        imgn src="img/ex4-1.jpg" alt="Números" class = "alta">
+        <h1>Programa Tabuada</h1>
+        
+        <p>Número: <input type="text" id="inNumero"> </p>
+        <input type="button" value="Mostrar Tabuada" id="btMostrar">
+        <pre id="outTabuada"> </pre>
+        <script>
+            var inNumero = document.getElementById("inNumero");
+            var btMostrar = document.getElementById("btMostrar");
+            var outTabuada = document.getElementById("outTabuada");
+             btMostrar.addEventListener("click", mostrarTabuada);
+             function mostrarTabuada(){
+                var numero = inNumero.value
+                if(numero == 0 || isNaN(numero)){
+                    alert("Informe um número válido...");
+                    inNumero.focus();
+                    return;
+                }
+                var resposta = "";
+                for(var i =1;i <=10; i++){
+                    resposta=resposta + numero + "x" + i +"="+ numero * i  + "\n"
+                }
+                outTabuada.textContent=resposta;
+
+                
+
+
+
+                }
+             
+        </script>
+        </body>
+
+
+        
+    
+</html>

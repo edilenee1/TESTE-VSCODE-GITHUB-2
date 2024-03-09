@@ -1,0 +1,15 @@
+<script>
+    function sequenciaGeometrica(N){
+        if(N <= 0){
+            document.write("N deve ser maior que 0.");
+            return
+        }
+        let termo = 1
+        for(let i = 0;i < N;++){
+            document.write(termo);
+            (termo *=2);
+        }
+    }
+    const N = Number(prompt("Digite o valor de N:"));
+    sequenciaGeometrica(N);
+</script>

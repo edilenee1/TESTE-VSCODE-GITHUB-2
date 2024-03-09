@@ -1,0 +1,22 @@
+<html>
+<script>
+    let v_carro = Number(prompt("Insira a velocidade do carro: "))
+    let v_max = 50
+    let excesso = Math.round(((v_carro/v_max)-1)*100)
+
+    if (v_carro > v_max){
+        if(excesso <= 20){
+            document.write("O motorista excedeu em " + excesso + " % a velocidade máxima, multa de R$85,13 e perda de 4 pontos na carteira.")
+        }
+        else if(excesso <= 50){
+            document.write("O motorista excedeu em " + excesso + " % a velocidade máxima, multa de R$127,69 e perda de 5 pontos na carteira.")
+        }
+        else{
+            document.write("O motorista excedeu em " + excesso + " % a velocidade máxima, multa de R$574,62 e perda de 7 pontos na carteira.")
+        }
+    }
+    else{
+        document.write("Você está na velocidade adequada.")
+    }
+</script>  
+</html>

@@ -1,0 +1,26 @@
+<script>
+    let salario = Number(prompt(" Salario :"))
+    let plano = prompt("Plano:")
+    let novo
+
+    switch(plano){
+        case("a"):
+        novo = salario *1.10
+        alert("Novo salário:"+ novo)
+        break;
+
+        case("b"):
+        novo = salario*1.20
+        alert("Novo salário: " + novo)
+        break;
+
+        case("c"):
+        novo = salario *1.30
+        alert("Novo salário:" + novo)
+        break
+
+        default:
+            alert("Erro")
+    }
+
+</script>

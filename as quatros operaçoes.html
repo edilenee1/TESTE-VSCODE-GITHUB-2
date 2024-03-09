@@ -1,0 +1,25 @@
+<script>
+    let x,y,op
+    x = Number( prompt("Digite o primeiro número:"))
+    op = prompt("Digite uma operação matemática:")
+    y = Number(prompt("Digite o segundo número:"))
+
+    switch (op){
+        case '+':
+            alert("Soma: " + (x+y))
+            break
+        case '-':
+            alert("Subtração:" + (x-y))
+            break
+        case '*':
+            alert("Multiplicação:" + (x*y))
+            break
+        case '/':
+            alert("Divisão:" + (x/y))
+            break
+        default:
+            alert("Operação digitada inválida")    
+
+    }
+
+</script>
